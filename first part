@@ -1,0 +1,60 @@
+<?php
+class Vartotojas{
+    private $name;
+    private $email;
+    private $phone;
+    private $comment;
+
+    // konstruktorius, kad nustatyti klases ypatybes, aprasytus klaseje
+    // jeigu nebutu konstruktoriaus, kiekviena klases ypatybe reiketu isideti i atskira metoda
+    // jeigu paliekame private
+    // jeigu klases ypatybes butu public, konstruktoriaus nereiketu
+    // klases ypatybes galetume issikviesti uz klases ribu    public function __construct($name, $email, $phone)
+{
+$this->name = $name;
+$this->email = $email;
+$this->phone = $phone;
+}
+
+// geteris - grazina
+public function show(){
+    $data[] = $this->name;
+    $data[] = $this->email;
+    $data[] = $this->phone;
+    $data[] = $this->comment;
+
+    return $data;
+}
+
+// seteris - nustato
+public function addComment($comment){
+    $this->comment = $comment;
+}
+}
+
+// susikuriame objektus
+$user = new Vartotojas('Jonas', 'jonas@one.lt', '+370*******');
+$user->addComment('Geras vyras!');
+$user2 = new Vartotojas('Petras', 'petras@one.lt', '+370******');
+$user2->addComment('Pats geriausias vyras!');
+$user3 = new Vartotojas('Antanaas', 'antanas@one.lt', '+370******');
+$user3->addComment('Neblogas vyras!');
+?>
+
+    <ul>
+        <?php foreach ($user->show() as $value):?>
+            <li><?=$value;?></li>
+        <?php endforeach;?>
+    </ul>
+
+    <ul>
+        <?php foreach ($user2->show() as $value):?>
+            <li><?=$value;?></li>
+        <?php endforeach;?>
+    </ul>
+
+    <ul>
+        <?php foreach ($user3->show() as $value):?>
+            <li><?=$value;?></li>
+        <?php endforeach;?>
+    </ul>
